@@ -6,7 +6,7 @@ describe("About Functions", function() {
       return a + b;
     }
 
-    expect(add(1, 2)).toBe(FILL_ME_IN);
+    expect(add(1, 2)).toBe(3);
   });
 
   it("should know internal variables override outer variables", function () {
@@ -15,15 +15,16 @@ describe("About Functions", function() {
     function getMessage() {
       return message;
     }
-
+    // internal , hoisting, 'this'
     function overrideMessage() {
-      var message = "Inner";
+      var message = "Inner"; //directly set
       return message;
     }
-
-    expect(getMessage()).toBe(FILL_ME_IN);
-    expect(overrideMessage()).toBe(FILL_ME_IN);
-    expect(message).toBe(FILL_ME_IN);
+    // if you take out 'var' it will change original
+    //lexical scoping
+    expect(getMessage()).toBe("Outer");
+    expect(overrideMessage()).toBe("Inner");
+    expect(message).toBe("Outer"); //global var
   });
 
   it("should have lexical scoping", function () {
@@ -35,7 +36,7 @@ describe("About Functions", function() {
       }
       return childfunction();
     }
-    expect(parentfunction()).toBe(FILL_ME_IN);
+    expect(parentfunction()).toBe('local');
   });
 
   it("should use lexical scoping to synthesise functions", function () {

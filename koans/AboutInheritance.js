@@ -1,5 +1,5 @@
 function Muppet(age, hobby) {
-  this.age = age;
+  this.age = age; //for this instance of muppet, what is the age?
   this.hobby = hobby;
 
   this.answerNanny = function(){
@@ -7,29 +7,29 @@ function Muppet(age, hobby) {
   }
 }
 
-function SwedishChef(age, hobby, mood) {
-  Muppet.call(this, age, hobby);
-  this.mood = mood;
+function SwedishChef(age, hobby, mood) { //every swedishChef IS A MUPPET but not viceversa
+  Muppet.call(this, age, hobby); //when you call this - bring in EVERYTHING from Muppet, but that means it gets overridden
+  this.mood = mood; //MUPPET IS BASE OBJ, swedish chef is derived obj
 
   this.cook = function() {
     return "Mmmm soup!";
   }
 }
 
-SwedishChef.prototype = new Muppet();
+SwedishChef.prototype = new Muppet(); //making an instance of a Muppet
 
 describe("About inheritance", function() {
   beforeEach(function(){
-    this.muppet = new Muppet(2, "coding");
+    this.muppet = new Muppet(2, "coding"); //made a muppet age:2, hobby: coding
 	this.swedishChef = new SwedishChef(2, "cooking", "chillin");
   });
 
   it("should be able to call a method on the derived object", function() {
-    expect(this.swedishChef.cook()).toEqual(FILL_ME_IN);
+    expect(this.swedishChef.cook()).toEqual("Mmmm soup!");
   });
 
   it("should be able to call a method on the base object", function() {
-    expect(this.swedishChef.answerNanny()).toEqual(FILL_ME_IN);
+    expect(this.swedishChef.answerNanny()).toEqual("Everything's cool!");
   });
 
   it("should set constructor parameters on the base object", function() {
@@ -50,16 +50,17 @@ Object.prototype.beget = function () {
 }
 
 function Gonzo(age, hobby, trick) {
-  Muppet.call(this, age, hobby);
-  this.trick = trick;
+  Muppet.call(this, age, hobby); //inheriting everything from Muppet, but age and hobby from Gonzo take PRECENDENT
+  this.trick = trick; //add a trick
+  //anytime you call a f(x) it's part of the syntax, it's like self in python, so anytime you call a class, you must use 'self' so here you must
 
-  this.doTrick = function() {
+  this.doTrick = function() { //if you do it, return it
     return this.trick;
   }
 }
 
 //no longer need to call the Muppet (base type) constructor
-Gonzo.prototype = Muppet.prototype.beget();
+Gonzo.prototype = Muppet.prototype.beget(); //not creating a new instance, but doing a new prototype -- same thing
 
 describe("About Crockford's inheritance improvement", function() {
   beforeEach(function(){

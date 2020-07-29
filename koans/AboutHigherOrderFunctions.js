@@ -11,9 +11,9 @@ describe("About Higher Order Functions", function () {
     var numbers = [1,2,3];
     var odd = _(numbers).filter(function (x) { return x % 2 !== 0 });
 
-    expect(odd).toEqual(FILL_ME_IN);
-    expect(odd.length).toBe(FILL_ME_IN);
-    expect(numbers.length).toBe(FILL_ME_IN);
+    expect(odd).toEqual([1,3]);
+    expect(odd.length).toBe(2);
+    expect(numbers.length).toBe(3); ///original does not change
   });
 
   it("should use 'map' to transform each element", function () {
@@ -60,14 +60,14 @@ describe("About Higher Order Functions", function () {
     var onlyEven = [2,4,6];
     var mixedBag = [2,4,5,6];
 
-    var isEven = function(x) { return x % 2 === 0 };
+    var isEven = function(x) { return x % 2 === 0 }; //x is arg, returns true if even num
 
     expect(_(onlyEven).any(isEven)).toBe(FILL_ME_IN);
     expect(_(mixedBag).any(isEven)).toBe(FILL_ME_IN);
   });
 
   it("should use range to generate an array", function() {
-      expect(_.range(3)).toEqual(FILL_ME_IN);
+      expect(_.range(3)).toEqual(FILL_ME_IN); //let's js do range - will create array
       expect(_.range(1, 4)).toEqual(FILL_ME_IN);
       expect(_.range(0, -4, -1)).toEqual(FILL_ME_IN);
   });
@@ -78,10 +78,10 @@ describe("About Higher Order Functions", function () {
 
   it("should use chain() ... .value() to use multiple higher order functions", function() {
       var result = _([ [0, 1], 2 ]).chain()
-                       .flatten()
-                       .map(function(x) { return x+1 } )
-                       .reduce(function (sum, x) { return sum + x })
-                       .value();
+                       .flatten() //takes away outer most brackets [0,1,2]
+                       .map(function(x) { return x+1 } )  //[1,2,3]
+                       .reduce(function (sum, x) { return sum + x })//starts at 0  single value will be o/p = 6
+                       .value(); //Extracts the value of a wrapped object.
 
       expect(result).toEqual(FILL_ME_IN);
   });
