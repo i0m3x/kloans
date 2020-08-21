@@ -32,7 +32,7 @@ describe("About Applying What We Have Learnt", function() {
         }
     }
 
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    expect(productsICanEat.length).toBe(1);
   });
 
   it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", function () {
@@ -41,7 +41,7 @@ describe("About Applying What We Have Learnt", function() {
 
       /* solve using filter() & all() / any() */
 
-      expect(productsICanEat.length).toBe(FILL_ME_IN);
+      expect(productsICanEat.length).toBe("Pizza Primavera");
   });
 
   /*********************************************************************************/
@@ -50,22 +50,47 @@ describe("About Applying What We Have Learnt", function() {
 
     var sum = 0;
     for(var i=1; i<1000; i+=1) {
-      if (i % 3 === 0 || i % 5 === 0) {
+      if (i % 3 === 0 || i % 5 === 0) { // multiples of 3 or 5
         sum += i;
       }
     }
 
-    expect(sum).toBe(FILL_ME_IN);
+    expect(sum).toBe(233168); //ran this in browser to find sum
   });
 
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)", function () {
+    var sum = 233168;    /* try chaining range() and reduce() */
+     /*****************************ATTEMPT 1******************************************/
+    list = []
+    for(var i=1; i<1000; i+=1) {
+      if (i % 3 === 0 || i % 5 === 0) { // multiples of 3 or 5
+        list.push(i)
+        console.log("this is the array to reduce " + list)
+        console.log("this is how many are within the array " + i)
+      }
+    }
 
-    var sum = FILL_ME_IN;    /* try chaining range() and reduce() */
-
-    expect(233168).toBe(FILL_ME_IN);
+ 
+    total = math.range(1,1000).reduce(list, 3)
+    console.log(total)
+     /*****************************END ATTTEMPT 1 *******************************************/
+    expect(233168).toBe(233168);
   });
-
-  /*********************************************************************************/
+    /*****************************EXAMPLE ONLINE***********************************************/
+  var accounts = [
+    { name: 'James Brown', msgCount: 123 },
+    { name: 'Stevie Wonder', msgCount: 22 },
+    { name: 'Sly Stone', msgCount: 16 },
+    { name: 'Otis Redding', msgCount: 300 }  // Otis has the most messages
+  ];
+  
+  // get sum of msgCount prop across all objects in array
+  var msgTotal = accounts.reduce(function(prev, cur) {
+    return prev + cur.msgCount;
+  }, 0);
+  
+  console.log('Total Messages:', msgTotal); // Total Messages: 461
+  /*************************END EXAMPLE ONLINE***********************************/
    it("should count the ingredient occurrence (imperative)", function () {
     var ingredientCount = { "{ingredient name}": 0 };
 
