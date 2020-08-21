@@ -33,17 +33,18 @@ describe("About inheritance", function() {
   });
 
   it("should set constructor parameters on the base object", function() {
-    expect(this.swedishChef.age).toEqual(FILL_ME_IN);
-    expect(this.swedishChef.hobby).toEqual(FILL_ME_IN);
+    expect(this.swedishChef.age).toEqual(2);
+    expect(this.swedishChef.hobby).toEqual("cooking");
   });
 
   it("should set constructor parameters on the derived object", function() {
-    expect(this.swedishChef.mood).toEqual(FILL_ME_IN);
+    expect(this.swedishChef.mood).toEqual("chillin");
   });
 });
 
 // http://javascript.crockford.com/prototypal.html
 Object.prototype.beget = function () {
+  //the author uses an empty Function object simply because it can be used as a constructor. Objects cannot. He then changes the constructor's prototype, so that it will return objects of that type. source; https://stackoverflow.com/questions/6799642/beget-function-in-javascript-the-good-parts
   function F() {}
   F.prototype = this;
   return new F();
@@ -68,19 +69,21 @@ describe("About Crockford's inheritance improvement", function() {
   });
 
   it("should be able to call a method on the derived object", function() {
-    expect(this.gonzo.doTrick()).toEqual(FILL_ME_IN);
+    expect(this.gonzo.doTrick()).toEqual("eat a tire");
   });
 
   it("should be able to call a method on the base object", function() {
-    expect(this.gonzo.answerNanny()).toEqual(FILL_ME_IN);
+    expect(this.gonzo.answerNanny()).toEqual("Everything's cool!");
   });
 
   it("should set constructor parameters on the base object", function() {
-    expect(this.gonzo.age).toEqual(FILL_ME_IN);
-    expect(this.gonzo.hobby).toEqual(FILL_ME_IN);
+    expect(this.gonzo.age).toEqual(3);
+    expect(this.gonzo.hobby).toEqual("daredevil performer");
   });
 
   it("should set constructor parameters on the derived object", function() {
-    expect(this.gonzo.trick).toEqual(FILL_ME_IN);
+    expect(this.gonzo.trick).toEqual("eat a tire");
+
+    //hallelujah, finished 21 Aug - no mistakes!
   });
 });
