@@ -79,8 +79,9 @@ describe("About Arrays", function() {
     array.push(3);
 
     expect(array).toEqual([1,2,3]);
-
-    var poppedValue = array.pop();
+    // The pop() method removes the last element from an array and returns that element. This method changes the length of the array.
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop
+    var poppedValue = array.pop(); 
     expect(poppedValue).toBe(3);
     expect(array).toEqual([1,2,]);
   });
@@ -96,3 +97,7 @@ describe("About Arrays", function() {
     expect(array).toEqual([1,2]);
   });
 });
+
+// The shift() method removes the first element from an array and returns that removed element. This method changes the length of the array.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift
